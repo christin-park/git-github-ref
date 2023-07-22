@@ -1,0 +1,62 @@
+-version history control
+-git is used on command line (PowerShell on windows)
+-command line is where commands/instructions are writen for the computer to follow
+-a commit is a version
+-COMMIT = VERSION
+
+ls: list of files and folders in the current folder
+    - without specifying a current folder, the default folder is $HOME
+    - to change from default, use command
+
+cd (change directory): changes to a diff directory  
+    - syntax: ~/Desktop/learn-git-github
+    - to check if u are in the right directory, write ls
+    - in order to use git commands, must be inside the folder containing all code
+
+git init: git starts in the current folder, and now tracks all changes in folder
+git status: show all changes since previous version (commit)
+    - if u run git status without git add, only untracked files (red)
+    - after git add, running git status show green files which are the ones where changes will be committed
+    - looking at source control is like the same as running git status
+
+git add: determines which files/folders will have changes be committed
+    - git add <file> pick individual file
+    - git add <folder/> pick all files and subfolders in a folder
+    - git add . pick all files
+    - does not create a new commit
+
+git commit: make a new commit
+    - git commit -m "message": creates a commit with the name "message"
+    - git commit -m "message" --amend: update prev commit instead of making a new one
+
+
+git config: when I tried to run git commit, I got an error cuz i need to configure email and name. so this is just a first time thing!!
+    - git config --global user.name "Christin Park"
+    - git config --global user.email "christinpark00@gmail.com"
+    - now, git commit should work :D 
+    - to reset, git commit --amend --reset-author
+
+source control: has buttons that act similarly to git commands 
+    - clicking '+' on "Changes" == git add . 
+    - working area: contains changes and stages changes
+    - staging area: changes in stage will go into the next version
+    - git tracks changes, so files can exist in "Changes" and "Staged Changes" at the same time,
+      if there are 2 modified versions
+
+git reset: go from staging to working area
+    - git reset <file>
+    - git reset <folder>
+    - git reset .
+
+git checkout: go from working to removed as a change
+    - git checkout -- <file>
+    - git checkout -- <folder>
+    - git checkout -- .
+
+
+
+
+
+
+
+    
