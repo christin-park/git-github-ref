@@ -1,8 +1,10 @@
--version history control
--git is used on command line (PowerShell on windows)
--command line is where commands/instructions are writen for the computer to follow
--a commit is a version
--COMMIT = VERSION
+GIT COMMANDS--------------------------------------------------------------------------------------------------------
+- version history control
+- git is used on command line (PowerShell on windows)
+- command line is where commands/instructions are writen for the computer to follow
+- a commit is a version
+- COMMIT = VERSION
+- q: quit
 
 ls: list of files and folders in the current folder
     - without specifying a current folder, the default folder is $HOME
@@ -18,6 +20,16 @@ git status: show all changes since previous version (commit)
     - if u run git status without git add, only untracked files (red)
     - after git add, running git status show green files which are the ones where changes will be committed
     - looking at source control is like the same as running git status
+
+git log: commit history
+    - git log curr commit and commits before
+    - git log --all show all commits. useful when u are viewing a prev commit but
+      u still want to see more recent commits
+    - git log --all --graph visually show all branching. useful when ur restoring code from a prev commit,
+      bc a new version isn't started, it is just branched off from the original. for example, if there are
+      v3, v2, v1, and u go back to v1, making a change becomes updated v1 instead of v1 branched off of v3
+    - can be used to view which commit u want to go back to
+    - commits tagged as (HEAD) tells you which commit u are on
 
 git add: determines which files/folders will have changes be committed
     - git add <file> pick individual file
@@ -52,8 +64,62 @@ git checkout: go from working to removed as a change
     - git checkout -- <file>
     - git checkout -- <folder>
     - git checkout -- .
+    - git checkout 1e44e6243e2f4ae4ff9802252be9ad31fb7a4c50 = gets back to version 2
+    - git checkout master master is last commit on branch. so instead of copying the looking
+      commit hash, u can just type master
 
+VERSION 2
+"commit 1e44e6243e2f4ae4ff9802252be9ad31fb7a4c50 (HEAD -> master)
+Author: Christin Park <christinpark00@gmail.com>
+Date:   Fri Jul 21 23:21:12 2023 -0500"
+    - "1e44e6243e2f4ae4ff9802252be9ad31fb7a4c50" = commit hash, id of commit
 
+ez recap
+create a version:
+    1. git init (first time only)
+    2. git status
+    3. git add .
+    4. git commit -m "message"
+
+view prev versions:
+    1. git log --all --graph
+    2. git checkout <commit hash OR branch name>
+
+restore to prev version:
+    1. git checkout <commit hash OR branch name>
+    2. git commit -m "message"
+
+rm -rg .git 
+    - all data (commits, history, branches, etc.) stored in .git folder. by deleting .git, removes git from project
+    - rm -rf removes
+
+ONLINE BACKUP USING GITHUB------------------------------------------------------------------------------------------
+- local repository: computer
+- remote repository: online
+- push: upload to github
+- pull: download from github
+
+git remote add <remote_name> <url>
+    - links local to remote repository
+    - convention for remote_name is origin
+    - take the HTTPS website https://github.com/christin-park/learn-git-github.git
+ 
+ git remote (in addition to git remote add)
+    - gives list of remote repositories that are currently linked. since I ran
+      git remote add origin https://github.com/christin-park/learn-git-github.git,
+      git remote -> origin
+    - git remove -v v stands for verbose, for more details
+    - git remote remove <remote_name> unlinks that specified remote_name
+
+git config --global credential.username <username>
+    - git config --global credential.username christin-park
+    - only I can push to global repo, so I have to tell git thats its me :D
+
+git push <remote_name> <branch>
+    - git push origin
+    - check branch with git log --all --graph
+    - pushes 1 branch of commits at a time, the specified branch. git push doesn't just push code but also the 
+      commit history
 
 
 
